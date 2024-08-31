@@ -5,6 +5,10 @@ const CrimeReportSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true

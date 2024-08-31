@@ -136,11 +136,12 @@ export const getAll = async (req, res) => {
 }
 
 export const submitCrimeReport = async (req, res) => {
-    const { name, location, crimeType, description, fileURL } = req.body;
+    const { name, email, location, crimeType, description, fileURL } = req.body;
     try {
         // Create a new crime report object
         const report = await CrimeReportModel.create({
             name,
+            email,
             location,
             crimeType,
             description,
@@ -162,6 +163,7 @@ export const submitCrimeReport = async (req, res) => {
             New Crime Report Submitted:
             
             Name: ${name}
+            Email: ${email}
             Location: ${location}
             Crime Type: ${crimeType}
             Description: ${description}
