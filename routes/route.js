@@ -22,5 +22,9 @@ router.get("/", (req, res) => {
     })
 
 })
+router.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  });
 
 export default router
