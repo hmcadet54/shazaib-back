@@ -3,6 +3,7 @@ import {signup, getAll, signin, verifyOTP, submitCrimeReport} from '../controlle
 import {getuser} from '../controllers/rest.js'
 import upload from "../utils/multer.js";
 import { imageUpload } from "../controllers/upload.js";
+import { universalFileUpload } from "../controllers/file_upload.js";
 import { cloudinaryUploader, cloudinaryConfig  } from "../utils/cloudinary.js";
 const router = express.Router()
 cloudinaryConfig();
@@ -14,6 +15,7 @@ router.post("/verifyOTP", verifyOTP)
 router.post("/imageupload", upload.single("image"), imageUpload)
 router.get("/getuser/:id", getuser)
 router.post("/info", submitCrimeReport)
+router.post('/fileupload', upload.single('file'), universalFileUpload);
 
 
 router.get("/", (req, res) => {
