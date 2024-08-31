@@ -14,7 +14,7 @@ router.post("/signin", signin)
 router.post("/verifyOTP", verifyOTP)
 router.post("/imageupload", upload.single("image"), imageUpload)
 router.get("/getuser/:id", getuser)
-router.post("/info", submitCrimeReport)
+router.post("/submitcrime", submitCrimeReport)
 router.post('/fileupload', upload.single('file'), universalFileUpload);
 
 
