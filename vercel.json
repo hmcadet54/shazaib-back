@@ -1,9 +1,0 @@
-{
-    "version": 2,
-    "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-    "routes": [{ "src": "/(.*)", "dest": "app.js" }],
-    "env": {
-      "NODE_ENV": "production",
-      "MONGODB_URI": "mongodb+srv://elderbrotherwedding:A_hd3LZtd.PcXBQ@crud.u8eekys.mongodb.net/auth-api?retryWrites=true&w=majority&appName=crud"
-    }
-  }

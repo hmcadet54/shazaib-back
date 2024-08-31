@@ -7,6 +7,8 @@ import cors from "cors"
 const app = express()
 const PORT = process.env.PORT || 5000
 
+
+
 // mongo db connection
 const uri = "mongodb+srv://elderbrotherwedding:A_hd3LZtd.PcXBQ@crud.u8eekys.mongodb.net/auth-api?retryWrites=true&w=majority&appName=crud"
 
@@ -14,30 +16,18 @@ const uri = "mongodb+srv://elderbrotherwedding:A_hd3LZtd.PcXBQ@crud.u8eekys.mong
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors({ origin: "*" }))
-
 //routes
-app.use('/', route)
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
-})
 
 // connection to the database
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
     .then(() => {
         console.log("Database connected")
-    })
-    .catch(err => {
-        console.error("Database connection error:", err)
-    })
 
-// Start the server
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server is running on PORT ${PORT}`)
-    })
-}
+        app.listen(PORT, () => {
+            console.log(`Server is running on PORT ${PORT}`)
+        })
 
-export default app
+    })
+    .catch(err => console.log(err))
+
+app.use(route)
